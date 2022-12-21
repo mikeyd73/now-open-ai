@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="max_tokens" label="Max Tokens" language="en" table="x_307427_now_open_openai_answer">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>max_tokens</element>
+            <help/>
+            <hint/>
+            <label>Max Tokens</label>
+            <language>en</language>
+            <name>x_307427_now_open_openai_answer</name>
+            <plural>Max Tokens</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-12-21 12:25:27</sys_created_on>
+            <sys_name>Max Tokens</sys_name>
+            <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+            <sys_update_name>sys_documentation_x_307427_now_open_openai_answer_max_tokens_en</sys_update_name>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

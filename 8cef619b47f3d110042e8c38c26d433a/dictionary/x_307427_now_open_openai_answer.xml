@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="bf80f1db47f3d110042e8c38c26d4339" label="OpenAI Answer" max_length="40" name="x_307427_now_open_openai_answer" type="collection">
+        <element default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element default="&lt;pre&gt;Hello, World!&lt;/pre&gt;" label="Answer" max_length="8000" name="answer" type="html"/>
+        <element default="128" label="Max Tokens" max_length="40" name="max_tokens" type="integer"/>
+        <element choice="3" default="text-davinci-003" label="Model" max_length="100" name="model" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Text Davinci 2" value="text-davinci-002"/>
+                <element inactive_on_update="false" label="Text Davinci 3" value="text-davinci-003"/>
+            </choice>
+        </element>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element choice="3" default="ready" label="Processing" max_length="40" name="processing" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Ready" sequence="1" value="ready"/>
+                <element inactive_on_update="false" label="Success" sequence="2" value="success"/>
+                <element inactive_on_update="false" label="Failed" sequence="3" value="failed"/>
+            </choice>
+        </element>
+        <element label="Prompt" mandatory="true" max_length="2000" name="prompt" type="string"/>
+    </element>
+</database>

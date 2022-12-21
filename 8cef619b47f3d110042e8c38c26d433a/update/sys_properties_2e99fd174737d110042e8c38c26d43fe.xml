@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>The OpenAI API uses API keys for authentication. Visit your API Keys page to retrieve the API key you'll use in your requests.</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_307427_now_open.open.ai.api.key</name>
+        <read_roles/>
+        <suffix>open.ai.api.key</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-21 13:02:01</sys_created_on>
+        <sys_id>2e99fd174737d110042e8c38c26d43fe</sys_id>
+        <sys_name>x_307427_now_open.open.ai.api.key</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_properties_2e99fd174737d110042e8c38c26d43fe</sys_update_name>
+        <type>password2</type>
+        <value>{{gpaes}}8AkyIk4l2nv2JAFI8qLgfKd7ECtgWFxSPcv5/ClbXVwv9/jZOO6SNWE6PfdHPCx5+wu1jtLc1Hra&#13;
+LNgolkVTCg==</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=2e99fd174737d110042e8c38c26d43fe"/>
+</record_update>
