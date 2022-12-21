@@ -1,5 +1,5 @@
 # now-open-ai
-Integrate open openai with servicenow.
+Integrate Open AI with servicenow.
 
 ![OpenAI-graphic](https://user-images.githubusercontent.com/37014061/208936132-9a902958-6d1a-4e6c-9950-e7e83538f25f.png)
 
