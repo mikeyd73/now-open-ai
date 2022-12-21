@@ -34,7 +34,7 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
-	 new x_307427_now_open.openaiUtils().getOpenAIResponse(current);
+	new x_307427_now_open.openaiUtils().getOpenAIResponse(current);
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>

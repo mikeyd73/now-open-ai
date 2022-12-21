@@ -60,5 +60,21 @@
             <sys_domain_path>/</sys_domain_path>
             <value>failed</value>
         </sys_choice>
+        <sys_choice action="INSERT_OR_UPDATE">
+            <dependent_value/>
+            <element>processing</element>
+            <hint/>
+            <inactive>false</inactive>
+            <label>Processing</label>
+            <language>en</language>
+            <name>x_307427_now_open_openai_answer</name>
+            <sequence>4</sequence>
+            <synonyms/>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2022-12-21 14:42:39</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <value>processing</value>
+        </sys_choice>
     </sys_choice>
 </record_update>

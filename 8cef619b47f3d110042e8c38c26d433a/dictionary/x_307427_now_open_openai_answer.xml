@@ -15,6 +15,7 @@
                 <element inactive_on_update="false" label="Ready" sequence="1" value="ready"/>
                 <element inactive_on_update="false" label="Success" sequence="2" value="success"/>
                 <element inactive_on_update="false" label="Failed" sequence="3" value="failed"/>
+                <element inactive_on_update="false" label="Processing" sequence="4" value="processing"/>
             </choice>
         </element>
         <element label="Prompt" mandatory="true" max_length="2000" name="prompt" type="string"/>

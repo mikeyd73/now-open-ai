@@ -32,7 +32,7 @@
         <order>100</order>
         <script><![CDATA[current.setValue('processing', "ready");
 current.update();
-gs.addInfoMessage(gs.getMessage("Trying to get OPEN AI response based on the prompet input."));
+gs.addInfoMessage(gs.getMessage("Trying to get OPEN AI response based on the prompt input."));
 action.setRedirectURL(current);]]></script>
         <show_insert>false</show_insert>
         <show_multiple_update>false</show_multiple_update>

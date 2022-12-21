@@ -16,6 +16,11 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		try { 
 			var recGR = !recOAIA ? this.getParameter('sysparm_buildingid'): recOAIA;
 			
+			if(recGR){
+				recOAIA.processing= "processing";
+				recOAIA.update();
+			}
+			
 			var raw = JSON.stringify({
 				"model": recGR.getValue("model"),
 				"prompt": recGR.getValue("prompt"),
@@ -35,6 +40,8 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
 			var text= JSON.parse(responseBody).choices[0].text;
 
+			text= text.replace(/\n/g,'<br>');
+			
 			if(text && text != ""){
 				recOAIA.answer= text;
 				recOAIA.processing= "success";
