@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="processing" table="x_307427_now_open_openai_answer">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="" table="x_307427_now_open_chat_history">
         <active>true</active>
         <array>false</array>
         <attributes/>
@@ -10,13 +10,13 @@
 	return '';  // return the calculated value
 
 })(current);]]></calculation>
-        <choice>3</choice>
+        <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Processing</column_label>
+        <column_label/>
         <comments/>
         <create_roles/>
-        <default_value>ready</default_value>
+        <default_value/>
         <defaultsort/>
         <delete_roles/>
         <dependent/>
@@ -26,19 +26,19 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>processing</element>
+        <element/>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
         <function_definition/>
         <function_field>false</function_field>
-        <internal_type display_value="Choice">choice</internal_type>
+        <internal_type display_value="Collection">collection</internal_type>
         <mandatory>false</mandatory>
         <max_length>40</max_length>
-        <name>x_307427_now_open_openai_answer</name>
+        <name>x_307427_now_open_chat_history</name>
         <next_element/>
         <primary>false</primary>
-        <read_only>true</read_only>
+        <read_only>false</read_only>
         <read_roles/>
         <reference/>
         <reference_cascade_rule/>
@@ -51,12 +51,12 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-12-21 14:19:44</sys_created_on>
-        <sys_name>Processing</sys_name>
+        <sys_created_on>2022-12-21 21:38:55</sys_created_on>
+        <sys_name>x_307427_now_open_chat_history</sys_name>
         <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
-        <sys_update_name>sys_dictionary_x_307427_now_open_openai_answer_processing</sys_update_name>
+        <sys_update_name>sys_dictionary_x_307427_now_open_chat_history_null</sys_update_name>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

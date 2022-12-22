@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="_PRVW__f2be8b23e3bb151020055c20145e1021">36be8b2347bb1510042e8c38c26d4322</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"a56d1f68701c4873b476c3942ce18a72","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"a56d1f68701c4873b476c3942ce18a72"}],"goals":[{"name":"primary","trigger_id":"a56d1f68701c4873b476c3942ce18a72","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"ac60464493cd478faaa767131ca44fd0","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"eb9ecc5da6824ed88bf4e4f453a25f46","name":"End"},{"type":"Decision","type":"Decision","name":"Decision","branches":[{"type":"Branch","type":"Branch","label":"No","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"chatgpt=no^ORvaInputs.chatgpt=n"},"id":"4274983c73e04e22875738db45698675","name":"No"},{"type":"Branch","type":"Branch","label":"Yes","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"chatgpt=yes^ORvaInputs.chatgpt=y"},"id":"d9dd4b25250942b688c741c8cb6b3292","name":"Yes"}],"id":"e6a92155572e456bbc29d9df6009e993","goal_id":"primary"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"f0b348b976bd4e068b98d2e2f421408f","message":{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    return 'Lestining...';\n})()\n"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"06123c8dfe2d4b5fbb64032209397bbe","name":"prompt","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"ScriptedAction","type":"ScriptedAction","script":"(function execute() {\n    var text= vaInputs.prompt;\n    vaVars.response= new x_307427_now_open.openaiUtils()\n    .getOpenAIResponseVA(vaVars.previousResponse + \" \" + text);\n    vaVars.previousResponse = vaVars.response;\n})()\n","id":"7c1da80f09e94de59d6551e3e1115a17","name":"openai","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"}},{"type":"TextOutputPrompt","type":"TextOutputPrompt","value":[{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    return vaVars.response;\n})()\n"}],"id":"0dff64fa605d499ba4445f901edb4e39","name":"response","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"secure":false},{"type":"Decision","type":"Decision","name":"Decision","branches":[{"type":"Branch","type":"Branch","label":"Continue","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"prompt!=bye"},"id":"5d04480c2a8f4ed092cb87e2ef93580c","name":"Continue"},{"type":"Branch","type":"Branch","label":"Exit","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"prompt=bye"},"id":"aa0135c8595f425b8c011ebc91ed6d29","name":"Exit"}],"id":"15a0548b937f4d38be37751888252985","goal_id":"primary"},{"type":"HtmlOutputPrompt","type":"HtmlOutputPrompt","height":0,"width":0,"id":"10815f1e7b8148d5a499294183b47f88","name":"Usage policies","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"value":{"type":"String","type":"String","mode":"string","value":"&lt;html&gt;\n    &lt;body&gt;\n    Please carefully read the following information:\n    &lt;a href=\"https://beta.openai.com/docs/usage-policies/usage-policies\" target=\"_blank\"&gt;\n    Usage policies\n    &lt;/a&gt;\n\n    &lt;/body&gt;\n&lt;/html&gt;\n"},"secure":false},{"type":"InputPrompt","type":"InputPrompt","variable_id":"4fa65eb76bf64c93b5804121754670e5","message":{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    vaVars.previousResponse= \"\";\n    return gs.getMessage(\"Would you like to continue chatting with OPEN AI? \\nYes, No, Bye\");\n})()\n"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"7efb57b7ade94579b86660c71967eee9","name":"chatgpt","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""}],"edges":[{"type":"Edge","source_node_id":"ac60464493cd478faaa767131ca44fd0","target_node_id":"10815f1e7b8148d5a499294183b47f88","id":"dfdf57eaaead4c3eb8ec3c98bba74ce7"},{"type":"Edge","source_node_id":"0dff64fa605d499ba4445f901edb4e39","target_node_id":"06123c8dfe2d4b5fbb64032209397bbe","id":"a7ef9dc095e74ed5938283b917ae8b7e"},{"type":"Edge","source_node_id":"e6a92155572e456bbc29d9df6009e993","target_node_id":"eb9ecc5da6824ed88bf4e4f453a25f46","branch_id":"4274983c73e04e22875738db45698675","id":"1799364d95d748eea224246ad270afa7","name":"4274983c73e04e22875738db45698675"},{"type":"Edge","source_node_id":"e6a92155572e456bbc29d9df6009e993","target_node_id":"06123c8dfe2d4b5fbb64032209397bbe","branch_id":"d9dd4b25250942b688c741c8cb6b3292","id":"5215c108322a44b2afd958e7b6844197","name":"d9dd4b25250942b688c741c8cb6b3292"},{"type":"Edge","source_node_id":"7c1da80f09e94de59d6551e3e1115a17","target_node_id":"0dff64fa605d499ba4445f901edb4e39","id":"381bd99ab1bc4b69abe29383a2123048"},{"type":"Edge","source_node_id":"06123c8dfe2d4b5fbb64032209397bbe","target_node_id":"15a0548b937f4d38be37751888252985","id":"7bd513e4124b43ff803b3fbf07dd7310"},{"type":"Edge","source_node_id":"15a0548b937f4d38be37751888252985","target_node_id":"7c1da80f09e94de59d6551e3e1115a17","branch_id":"5d04480c2a8f4ed092cb87e2ef93580c","id":"194af918bb634a44aa4acc87ef00c258","name":"5d04480c2a8f4ed092cb87e2ef93580c"},{"type":"Edge","source_node_id":"15a0548b937f4d38be37751888252985","target_node_id":"eb9ecc5da6824ed88bf4e4f453a25f46","branch_id":"aa0135c8595f425b8c011ebc91ed6d29","id":"d28a06d83ae54d73990602ca0dd92cc2","name":"aa0135c8595f425b8c011ebc91ed6d29"},{"type":"Edge","source_node_id":"10815f1e7b8148d5a499294183b47f88","target_node_id":"7efb57b7ade94579b86660c71967eee9","id":"b2a68d76ac19402292682088d453298d"},{"type":"Edge","source_node_id":"7efb57b7ade94579b86660c71967eee9","target_node_id":"e6a92155572e456bbc29d9df6009e993","id":"8c11e7641a254275910b1810505d84d4"}],"id":"primary"}],"script_variables":[],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"current-user","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"VariableDto","type":"String","name":"chatgpt","list":false,"id":"4fa65eb76bf64c93b5804121754670e5","formatType":"Text","validationScript":"","secure":false,"sensitive":false},{"type":"VariableDto","type":"String","name":"prompt","list":false,"id":"f0b348b976bd4e068b98d2e2f421408f","formatType":"Text","validationScript":"","secure":false,"sensitive":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":[],"scope":"8cef619b47f3d110042e8c38c26d433a","domain":"global","topic_type":"STANDARD","channels":[],"id":"b27f5b5f47fbd110042e8c38c26d4314","name":"_PRVW__f2be8b23e3bb151020055c20145e1021","key_phrases":["ChatGPT","Open AI","Now"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"library":false,"readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>b27f5b5f47fbd110042e8c38c26d4314</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "ac60464493cd478faaa767131ca44fd0": {
+          "id": "ac60464493cd478faaa767131ca44fd0",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "eb9ecc5da6824ed88bf4e4f453a25f46": {
+          "id": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "e6a92155572e456bbc29d9df6009e993": {
+          "id": "e6a92155572e456bbc29d9df6009e993",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "06123c8dfe2d4b5fbb64032209397bbe": {
+          "id": "06123c8dfe2d4b5fbb64032209397bbe",
+          "stepType": "Prompt",
+          "name": "prompt",
+          "prompt": {
+            "value": "(function execute() {\n    return 'Lestining...';\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "f0b348b976bd4e068b98d2e2f421408f",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "7c1da80f09e94de59d6551e3e1115a17": {
+          "id": "7c1da80f09e94de59d6551e3e1115a17",
+          "name": "openai",
+          "script": "(function execute() {\n    var text= vaInputs.prompt;\n    vaVars.response= new x_307427_now_open.openaiUtils()\n    .getOpenAIResponseVA(vaVars.previousResponse + \" \" + text);\n    vaVars.previousResponse = vaVars.response;\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "0dff64fa605d499ba4445f901edb4e39": {
+          "id": "0dff64fa605d499ba4445f901edb4e39",
+          "stepType": "TextOutput",
+          "name": "response",
+          "secure": false,
+          "value": [
+            {
+              "value": "(function execute() {\n    return vaVars.response;\n})()\n",
+              "mode": "script"
+            }
+          ],
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "15a0548b937f4d38be37751888252985": {
+          "id": "15a0548b937f4d38be37751888252985",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "10815f1e7b8148d5a499294183b47f88": {
+          "id": "10815f1e7b8148d5a499294183b47f88",
+          "stepType": "HtmlOutput",
+          "name": "Usage policies",
+          "value": "&lt;html&gt;\n    &lt;body&gt;\n    Please carefully read the following information:\n    &lt;a href=\"https://beta.openai.com/docs/usage-policies/usage-policies\" target=\"_blank\"&gt;\n    Usage policies\n    &lt;/a&gt;\n\n    &lt;/body&gt;\n&lt;/html&gt;\n",
+          "height": "0",
+          "width": "0",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "7efb57b7ade94579b86660c71967eee9": {
+          "id": "7efb57b7ade94579b86660c71967eee9",
+          "stepType": "Prompt",
+          "name": "chatgpt",
+          "prompt": {
+            "value": "(function execute() {\n    vaVars.previousResponse= \"\";\n    return gs.getMessage(\"Would you like to continue chatting with OPEN AI? \\nYes, No, Bye\");\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "4fa65eb76bf64c93b5804121754670e5",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "dfdf57eaaead4c3eb8ec3c98bba74ce7",
+          "edgeType": "Edge",
+          "source": "ac60464493cd478faaa767131ca44fd0",
+          "target": "10815f1e7b8148d5a499294183b47f88",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "a7ef9dc095e74ed5938283b917ae8b7e",
+          "edgeType": "Edge",
+          "source": "0dff64fa605d499ba4445f901edb4e39",
+          "target": "06123c8dfe2d4b5fbb64032209397bbe",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "1799364d95d748eea224246ad270afa7",
+          "edgeType": "Branch",
+          "source": "e6a92155572e456bbc29d9df6009e993",
+          "target": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.chatgpt=no^ORvaInputs.chatgpt=n",
+            "mode": "query"
+          },
+          "label": "No"
+        },
+        {
+          "id": "5215c108322a44b2afd958e7b6844197",
+          "edgeType": "Branch",
+          "source": "e6a92155572e456bbc29d9df6009e993",
+          "target": "06123c8dfe2d4b5fbb64032209397bbe",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.chatgpt=yes^ORvaInputs.chatgpt=y",
+            "mode": "query"
+          },
+          "label": "Yes"
+        },
+        {
+          "id": "381bd99ab1bc4b69abe29383a2123048",
+          "edgeType": "Edge",
+          "source": "7c1da80f09e94de59d6551e3e1115a17",
+          "target": "0dff64fa605d499ba4445f901edb4e39",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "7bd513e4124b43ff803b3fbf07dd7310",
+          "edgeType": "Edge",
+          "source": "06123c8dfe2d4b5fbb64032209397bbe",
+          "target": "15a0548b937f4d38be37751888252985",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "194af918bb634a44aa4acc87ef00c258",
+          "edgeType": "Branch",
+          "source": "15a0548b937f4d38be37751888252985",
+          "target": "7c1da80f09e94de59d6551e3e1115a17",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.prompt!=bye",
+            "mode": "query"
+          },
+          "label": "Continue"
+        },
+        {
+          "id": "d28a06d83ae54d73990602ca0dd92cc2",
+          "edgeType": "Branch",
+          "source": "15a0548b937f4d38be37751888252985",
+          "target": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.prompt=bye",
+            "mode": "query"
+          },
+          "label": "Exit"
+        },
+        {
+          "id": "b2a68d76ac19402292682088d453298d",
+          "edgeType": "Edge",
+          "source": "10815f1e7b8148d5a499294183b47f88",
+          "target": "7efb57b7ade94579b86660c71967eee9",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "8c11e7641a254275910b1810505d84d4",
+          "edgeType": "Edge",
+          "source": "7efb57b7ade94579b86660c71967eee9",
+          "target": "e6a92155572e456bbc29d9df6009e993",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "4fa65eb76bf64c93b5804121754670e5": {
+      "id": "4fa65eb76bf64c93b5804121754670e5",
+      "name": "chatgpt",
+      "label": "Chatgpt",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3MTY1NDU2MTQxOSBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    },
+    "f0b348b976bd4e068b98d2e2f421408f": {
+      "id": "f0b348b976bd4e068b98d2e2f421408f",
+      "name": "prompt",
+      "label": "Prompt",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3MTY1NTY4NTQ2NiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    }
+  }
+}</graph>
+        <name>_PRVW__f2be8b23e3bb151020055c20145e1021</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-22 13:51:38</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>36be8b2347bb1510042e8c38c26d4325</sys_id>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_cb_design_topic_36be8b2347bb1510042e8c38c26d4325</sys_update_name>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>

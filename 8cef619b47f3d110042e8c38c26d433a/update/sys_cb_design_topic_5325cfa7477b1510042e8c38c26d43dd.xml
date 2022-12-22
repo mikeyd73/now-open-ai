@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="_PRVW__1325cfa7e07b15104cf9d694a16bacd9">5325cfa7477b1510042e8c38c26d43da</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"619f24abcd70469eb2d12f0eb68fc4bc","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"619f24abcd70469eb2d12f0eb68fc4bc"}],"goals":[{"name":"primary","trigger_id":"619f24abcd70469eb2d12f0eb68fc4bc","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"ac60464493cd478faaa767131ca44fd0","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"eb9ecc5da6824ed88bf4e4f453a25f46","name":"End"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"4fa65eb76bf64c93b5804121754670e5","message":{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    vaVars.previousResponse= \"\";\n    return gs.getMessage(\"Would you like to chat with ChatGPT?\");\n})()\n"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"7efb57b7ade94579b86660c71967eee9","name":"chatgpt","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"Decision","type":"Decision","name":"Decision","branches":[{"type":"Branch","type":"Branch","label":"No","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"chatgpt=no^ORvaInputs.chatgpt=n"},"id":"59015f48eded4dc1beb4f25414339c3b","name":"No"},{"type":"Branch","type":"Branch","label":"Yes","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"chatgpt=yes^ORvaInputs.chatgpt=y"},"id":"3c38f9a9eefc42da9d6e81c76225f1e8","name":"Yes"}],"id":"e6a92155572e456bbc29d9df6009e993","goal_id":"primary"},{"type":"InputPrompt","type":"InputPrompt","variable_id":"f0b348b976bd4e068b98d2e2f421408f","message":{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    return 'Lestining...';\n})()\n"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"id":"06123c8dfe2d4b5fbb64032209397bbe","name":"prompt","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"formatType":"Text","validationScript":""},{"type":"ScriptedAction","type":"ScriptedAction","script":"(function execute() {\n    var text= vaInputs.prompt;\n    //vaVars.previousResponse += \" \"+ text;\n    vaVars.response= new x_307427_now_open.openaiUtils().getOpenAIResponseVA(text);\n    vaVars.previousResponse += \" \"+ vaVars.response;\n})()\n","id":"7c1da80f09e94de59d6551e3e1115a17","name":"openai","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"}},{"type":"TextOutputPrompt","type":"TextOutputPrompt","value":[{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    return vaVars.response;\n})()\n"}],"id":"0dff64fa605d499ba4445f901edb4e39","name":"response","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"secure":false},{"type":"TextOutputPrompt","type":"TextOutputPrompt","value":[{"type":"String","type":"String","mode":"script","value":"(function execute() {\n    return vaVars.previousResponse;\n})()\n"}],"id":"95fff599fc504965906f326094145943","name":"test history","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"secure":false},{"type":"Decision","type":"Decision","name":"Decision","branches":[{"type":"Branch","type":"Branch","label":"Continue","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":""},"id":"4597240fc30942b3a24efc56aab1ba84","name":"Continue"},{"type":"Branch","type":"Branch","label":"Exit","expression":{"type":"Applicability","type":"Applicability","mode":"query","value":"prompt=exit^ORvaInputs.prompt=close^ORvaInputs.prompt=done"},"id":"991a9d99bf034e448a6519eb0b575b70","name":"Exit"}],"id":"15a0548b937f4d38be37751888252985","goal_id":"primary"}],"edges":[{"type":"Edge","source_node_id":"0dff64fa605d499ba4445f901edb4e39","target_node_id":"95fff599fc504965906f326094145943","id":"a7ef9dc095e74ed5938283b917ae8b7e"},{"type":"Edge","source_node_id":"ac60464493cd478faaa767131ca44fd0","target_node_id":"7efb57b7ade94579b86660c71967eee9","id":"dfdf57eaaead4c3eb8ec3c98bba74ce7"},{"type":"Edge","source_node_id":"7efb57b7ade94579b86660c71967eee9","target_node_id":"e6a92155572e456bbc29d9df6009e993","id":"45578f88004b4a3a8be3f4b7e25fb302"},{"type":"Edge","source_node_id":"e6a92155572e456bbc29d9df6009e993","target_node_id":"eb9ecc5da6824ed88bf4e4f453a25f46","branch_id":"59015f48eded4dc1beb4f25414339c3b","id":"1799364d95d748eea224246ad270afa7","name":"59015f48eded4dc1beb4f25414339c3b"},{"type":"Edge","source_node_id":"e6a92155572e456bbc29d9df6009e993","target_node_id":"06123c8dfe2d4b5fbb64032209397bbe","branch_id":"3c38f9a9eefc42da9d6e81c76225f1e8","id":"5215c108322a44b2afd958e7b6844197","name":"3c38f9a9eefc42da9d6e81c76225f1e8"},{"type":"Edge","source_node_id":"7c1da80f09e94de59d6551e3e1115a17","target_node_id":"0dff64fa605d499ba4445f901edb4e39","id":"381bd99ab1bc4b69abe29383a2123048"},{"type":"Edge","source_node_id":"95fff599fc504965906f326094145943","target_node_id":"06123c8dfe2d4b5fbb64032209397bbe","id":"092f5208885a49838d98a25791eadf74"},{"type":"Edge","source_node_id":"06123c8dfe2d4b5fbb64032209397bbe","target_node_id":"15a0548b937f4d38be37751888252985","id":"7bd513e4124b43ff803b3fbf07dd7310"},{"type":"Edge","source_node_id":"15a0548b937f4d38be37751888252985","target_node_id":"7c1da80f09e94de59d6551e3e1115a17","branch_id":"4597240fc30942b3a24efc56aab1ba84","id":"194af918bb634a44aa4acc87ef00c258","name":"4597240fc30942b3a24efc56aab1ba84"},{"type":"Edge","source_node_id":"15a0548b937f4d38be37751888252985","target_node_id":"eb9ecc5da6824ed88bf4e4f453a25f46","branch_id":"991a9d99bf034e448a6519eb0b575b70","id":"d28a06d83ae54d73990602ca0dd92cc2","name":"991a9d99bf034e448a6519eb0b575b70"}],"id":"primary"}],"script_variables":[],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"current-user","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"VariableDto","type":"String","name":"chatgpt","list":false,"id":"4fa65eb76bf64c93b5804121754670e5","formatType":"Text","validationScript":"","secure":false,"sensitive":false},{"type":"VariableDto","type":"String","name":"prompt","list":false,"id":"f0b348b976bd4e068b98d2e2f421408f","formatType":"Text","validationScript":"","secure":false,"sensitive":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":[],"scope":"8cef619b47f3d110042e8c38c26d433a","domain":"global","topic_type":"STANDARD","channels":[],"id":"b27f5b5f47fbd110042e8c38c26d4314","name":"_PRVW__1325cfa7e07b15104cf9d694a16bacd9","key_phrases":["ChatGPT","Open AI","Now"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[],"triggerable_by_notification":false,"library":false,"readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>b27f5b5f47fbd110042e8c38c26d4314</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "ac60464493cd478faaa767131ca44fd0": {
+          "id": "ac60464493cd478faaa767131ca44fd0",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "eb9ecc5da6824ed88bf4e4f453a25f46": {
+          "id": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "7efb57b7ade94579b86660c71967eee9": {
+          "id": "7efb57b7ade94579b86660c71967eee9",
+          "stepType": "Prompt",
+          "name": "chatgpt",
+          "prompt": {
+            "value": "(function execute() {\n    vaVars.previousResponse= \"\";\n    return gs.getMessage(\"Would you like to chat with ChatGPT?\");\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "4fa65eb76bf64c93b5804121754670e5",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "e6a92155572e456bbc29d9df6009e993": {
+          "id": "e6a92155572e456bbc29d9df6009e993",
+          "stepType": "Decision",
+          "name": "Decision"
+        },
+        "06123c8dfe2d4b5fbb64032209397bbe": {
+          "id": "06123c8dfe2d4b5fbb64032209397bbe",
+          "stepType": "Prompt",
+          "name": "prompt",
+          "prompt": {
+            "value": "(function execute() {\n    return 'Lestining...';\n})()\n",
+            "mode": "script"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false,
+          "variableId": "f0b348b976bd4e068b98d2e2f421408f",
+          "inputType": {
+            "format": "Text",
+            "script": ""
+          }
+        },
+        "7c1da80f09e94de59d6551e3e1115a17": {
+          "id": "7c1da80f09e94de59d6551e3e1115a17",
+          "name": "openai",
+          "script": "(function execute() {\n    var text= vaInputs.prompt;\n    //vaVars.previousResponse += \" \"+ text;\n    vaVars.response= new x_307427_now_open.openaiUtils().getOpenAIResponseVA(text);\n    vaVars.previousResponse += \" \"+ vaVars.response;\n})()\n",
+          "stepType": "ScriptAction",
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "0dff64fa605d499ba4445f901edb4e39": {
+          "id": "0dff64fa605d499ba4445f901edb4e39",
+          "stepType": "TextOutput",
+          "name": "response",
+          "secure": false,
+          "value": [
+            {
+              "value": "(function execute() {\n    return vaVars.response;\n})()\n",
+              "mode": "script"
+            }
+          ],
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "95fff599fc504965906f326094145943": {
+          "id": "95fff599fc504965906f326094145943",
+          "stepType": "TextOutput",
+          "name": "test history",
+          "secure": false,
+          "value": [
+            {
+              "value": "(function execute() {\n    return vaVars.previousResponse;\n})()\n",
+              "mode": "script"
+            }
+          ],
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          }
+        },
+        "15a0548b937f4d38be37751888252985": {
+          "id": "15a0548b937f4d38be37751888252985",
+          "stepType": "Decision",
+          "name": "Decision"
+        }
+      },
+      "edges": [
+        {
+          "id": "a7ef9dc095e74ed5938283b917ae8b7e",
+          "edgeType": "Edge",
+          "source": "0dff64fa605d499ba4445f901edb4e39",
+          "target": "95fff599fc504965906f326094145943",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "dfdf57eaaead4c3eb8ec3c98bba74ce7",
+          "edgeType": "Edge",
+          "source": "ac60464493cd478faaa767131ca44fd0",
+          "target": "7efb57b7ade94579b86660c71967eee9",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "45578f88004b4a3a8be3f4b7e25fb302",
+          "edgeType": "Edge",
+          "source": "7efb57b7ade94579b86660c71967eee9",
+          "target": "e6a92155572e456bbc29d9df6009e993",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "1799364d95d748eea224246ad270afa7",
+          "edgeType": "Branch",
+          "source": "e6a92155572e456bbc29d9df6009e993",
+          "target": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.chatgpt=no^ORvaInputs.chatgpt=n",
+            "mode": "query"
+          },
+          "label": "No"
+        },
+        {
+          "id": "5215c108322a44b2afd958e7b6844197",
+          "edgeType": "Branch",
+          "source": "e6a92155572e456bbc29d9df6009e993",
+          "target": "06123c8dfe2d4b5fbb64032209397bbe",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.chatgpt=yes^ORvaInputs.chatgpt=y",
+            "mode": "query"
+          },
+          "label": "Yes"
+        },
+        {
+          "id": "381bd99ab1bc4b69abe29383a2123048",
+          "edgeType": "Edge",
+          "source": "7c1da80f09e94de59d6551e3e1115a17",
+          "target": "0dff64fa605d499ba4445f901edb4e39",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "092f5208885a49838d98a25791eadf74",
+          "edgeType": "Edge",
+          "source": "95fff599fc504965906f326094145943",
+          "target": "06123c8dfe2d4b5fbb64032209397bbe",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "7bd513e4124b43ff803b3fbf07dd7310",
+          "edgeType": "Edge",
+          "source": "06123c8dfe2d4b5fbb64032209397bbe",
+          "target": "15a0548b937f4d38be37751888252985",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "194af918bb634a44aa4acc87ef00c258",
+          "edgeType": "Branch",
+          "source": "15a0548b937f4d38be37751888252985",
+          "target": "7c1da80f09e94de59d6551e3e1115a17",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "",
+            "mode": "query"
+          },
+          "label": "Continue"
+        },
+        {
+          "id": "d28a06d83ae54d73990602ca0dd92cc2",
+          "edgeType": "Branch",
+          "source": "15a0548b937f4d38be37751888252985",
+          "target": "eb9ecc5da6824ed88bf4e4f453a25f46",
+          "sourcePort": "",
+          "targetPort": "",
+          "expression": {
+            "value": "vaInputs.prompt=exit^ORvaInputs.prompt=close^ORvaInputs.prompt=done",
+            "mode": "query"
+          },
+          "label": "Exit"
+        }
+      ]
+    }
+  },
+  "variables": {
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "4fa65eb76bf64c93b5804121754670e5": {
+      "id": "4fa65eb76bf64c93b5804121754670e5",
+      "name": "chatgpt",
+      "label": "Chatgpt",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3MTY1NDU2MTQxOSBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    },
+    "f0b348b976bd4e068b98d2e2f421408f": {
+      "id": "f0b348b976bd4e068b98d2e2f421408f",
+      "name": "prompt",
+      "label": "Prompt",
+      "varType": "string",
+      "secure": false,
+      "category": "vaInputs",
+      "encryptionHashFunction": "SHA-256",
+      "encryptionSalt": {
+        "value": "MTY3MTY1NTY4NTQ2NiBWQSBEZXNpZ25lciBpcyBhd2Vzb21l",
+        "mode": "simple"
+      }
+    }
+  }
+}</graph>
+        <name>_PRVW__1325cfa7e07b15104cf9d694a16bacd9</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-22 13:09:53</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>5325cfa7477b1510042e8c38c26d43dd</sys_id>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_cb_design_topic_5325cfa7477b1510042e8c38c26d43dd</sys_update_name>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>

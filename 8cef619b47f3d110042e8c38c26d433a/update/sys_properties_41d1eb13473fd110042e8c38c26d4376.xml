@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices/>
+        <description>The OpenAI API is powered by a family of models with different capabilities and price points. You can also customize our base models for your specific use case with fine-tuning.&#13;
+MODELS: GPT-3, Codex, Content filter.&#13;
+</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_307427_now_open.open.ai.api.model</name>
+        <read_roles/>
+        <suffix>open.ai.api.model</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-21 20:38:13</sys_created_on>
+        <sys_id>41d1eb13473fd110042e8c38c26d4376</sys_id>
+        <sys_name>x_307427_now_open.open.ai.api.model</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_properties_41d1eb13473fd110042e8c38c26d4376</sys_update_name>
+        <type>string</type>
+        <value>text-davinci-003</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=41d1eb13473fd110042e8c38c26d4376"/>
+</record_update>

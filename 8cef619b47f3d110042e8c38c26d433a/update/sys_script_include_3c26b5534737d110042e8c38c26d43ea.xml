@@ -11,6 +11,9 @@
 openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
 	OPEN_AI_KEY: gs.getProperty("x_307427_now_open.open.ai.api.key"),
+	OPEN_AI_MODEL: gs.getProperty("x_307427_now_open.open.ai.api.model"),
+	OPEN_AI_MAX_TOKENS: +gs.getProperty("x_307427_now_open.open.ai.api.max.tokens"),
+	OPEN_AI_MAX_TEMPERATURE: +gs.getProperty("x_307427_now_open.open.ai.api.temperature"),
 	
 	getOpenAIResponse:function(recOAIA){
 		try { 
@@ -24,9 +27,8 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			var raw = JSON.stringify({
 				"model": recGR.getValue("model"),
 				"prompt": recGR.getValue("prompt"),
-				"temperature": 0,
+				"temperature": this.OPEN_AI_MAX_TEMPERATURE,
 				"max_tokens": +recGR.getValue("max_tokens"),
-
 			});
 
 			var r = new sn_ws.RESTMessageV2('x_307427_now_open.Open AI', 'POST');
@@ -51,6 +53,46 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 				recOAIA.processing= "failed";
 				recOAIA.update();
 			}
+		}
+		catch(ex) {
+			return ex.message;
+		}
+	},
+	
+	getOpenAIResponseVA:function(vaInput){
+		try { 
+			
+			/*var previous_prompt = "i wanna eat";
+			var user_response = "What would you like to eat?";
+			var history = "Bot: " + previous_prompt + "\nUser: " + user_response;
+			var context = "{\"previous_prompt\":\"" + previous_prompt + "\", \"user_response\":\"" + user_response + "\"}";
+			// Set the memory parameter
+			var memory = [
+				{"text": previous_prompt, "speaker": "bot"},
+				{"text": user_response, "speaker": "user"}
+			];*/
+			
+			var raw = JSON.stringify({
+				"model": this.OPEN_AI_MODEL,
+				"prompt": "" + vaInput,
+				"temperature": this.OPEN_AI_MAX_TEMPERATURE,
+				"max_tokens": this.OPEN_AI_MAX_TOKENS,
+				//"memory": memory
+			});
+
+			//gs.info("6468466 " + vaInput)
+			
+			var r = new sn_ws.RESTMessageV2('x_307427_now_open.Open AI', 'POST');
+			r.setRequestHeader("Authorization", "Bearer " + this.OPEN_AI_KEY);
+			r.setRequestHeader("Content-Type", "application/json");
+			r.setRequestBody(raw);
+
+			var response = r.execute();
+			var responseBody = response.getBody();	 
+			var httpStatus = response.getStatusCode();
+
+			return JSON.parse(responseBody).choices[0].text;
+
 		}
 		catch(ex) {
 			return ex.message;
