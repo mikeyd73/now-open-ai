@@ -1,3 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="5dff6f9f473fd110042e8c38c26d432c" label="Chat History" max_length="40" name="x_307427_now_open_chat_history" type="collection"/>
+    <element db_object_id="5dff6f9f473fd110042e8c38c26d432c" label="Chat History" max_length="40" name="x_307427_now_open_chat_history" type="collection">
+        <element choice="1" label="Flag" max_length="40" name="flag" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Informative" sequence="1" value="informative"/>
+                <element inactive_on_update="false" label="Inappropriate" sequence="2" value="inappropriate"/>
+            </choice>
+        </element>
+        <element label="ID" max_length="100" name="id" read_only="true" type="string"/>
+        <element label="Interaction" max_length="32" name="interaction" read_only="true" reference="interaction" type="reference"/>
+        <element label="Prompt" max_length="4000" name="prompt" read_only="true" type="string"/>
+        <element label="Response" max_length="4000" name="response" read_only="true" type="string"/>
+        <index name="index">
+            <element name="interaction"/>
+        </index>
+    </element>
 </database>

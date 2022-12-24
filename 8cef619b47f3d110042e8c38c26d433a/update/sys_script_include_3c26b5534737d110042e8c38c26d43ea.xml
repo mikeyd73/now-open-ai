@@ -13,7 +13,8 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 	OPEN_AI_KEY: gs.getProperty("x_307427_now_open.open.ai.api.key"),
 	OPEN_AI_MODEL: gs.getProperty("x_307427_now_open.open.ai.api.model"),
 	OPEN_AI_MAX_TOKENS: +gs.getProperty("x_307427_now_open.open.ai.api.max.tokens"),
-	OPEN_AI_MAX_TEMPERATURE: +gs.getProperty("x_307427_now_open.open.ai.api.temperature"),
+	OPEN_AI_TEMPERATURE: +gs.getProperty("x_307427_now_open.open.ai.api.temperature"),
+	OPEN_AI_BLACK_LIST: gs.getProperty("x_307427_now_open.open.ai.api.blacklist.keywords"),
 	
 	getOpenAIResponse:function(recOAIA){
 		try { 
@@ -27,7 +28,7 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			var raw = JSON.stringify({
 				"model": recGR.getValue("model"),
 				"prompt": recGR.getValue("prompt"),
-				"temperature": this.OPEN_AI_MAX_TEMPERATURE,
+				"temperature": this.OPEN_AI_TEMPERATURE,
 				"max_tokens": +recGR.getValue("max_tokens"),
 			});
 
@@ -59,7 +60,7 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		}
 	},
 	
-	getOpenAIResponseVA:function(vaInput){
+	getOpenAIResponseVA:function(previousResponse , vaInput){
 		try { 
 			
 			/*var previous_prompt = "i wanna eat";
@@ -74,13 +75,13 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			
 			var raw = JSON.stringify({
 				"model": this.OPEN_AI_MODEL,
-				"prompt": "" + vaInput,
-				"temperature": this.OPEN_AI_MAX_TEMPERATURE,
+				"prompt": previousResponse ? previousResponse + " " + vaInput : "" + vaInput,
+				"temperature": this.OPEN_AI_TEMPERATURE,
 				"max_tokens": this.OPEN_AI_MAX_TOKENS,
 				//"memory": memory
 			});
 
-			//gs.info("6468466 " + vaInput)
+			//gs.info("6468466x raw:  " + raw)
 			
 			var r = new sn_ws.RESTMessageV2('x_307427_now_open.Open AI', 'POST');
 			r.setRequestHeader("Authorization", "Bearer " + this.OPEN_AI_KEY);
@@ -91,12 +92,59 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 			var responseBody = response.getBody();	 
 			var httpStatus = response.getStatusCode();
 
-			return JSON.parse(responseBody).choices[0].text;
+
+			var answerObj= JSON.parse(responseBody);
+			var text= answerObj.choices[0].text.trim();
+			//gs.info("6468466xx " + JSON.stringify(answerObj))
+			this.saveHistory(answerObj.id, vaInput.toString(), text);
+		
+			return text;
 
 		}
 		catch(ex) {
 			return ex.message;
 		}
+	},
+	
+	saveHistory:function(id, prompt, response){
+		
+		var flag= "";
+		var blk= this.OPEN_AI_BLACK_LIST.toLowerCase().split(",") || [];
+		//gs.info("65464684: " + blk)
+		var flagged= blk.length && blk.some(function(keyword){
+			return prompt.toLowerCase().search(keyword) != -1;
+		});
+		//gs.info("65464684: " + flagged)
+		if (flagged) {
+			flag= "inappropriate";
+		}else if(response.length > 50){
+			flag= "	informative";
+		}
+
+		var interactionRefId= this.getInteraction();
+		var chtGr = new GlideRecord("x_307427_now_open_chat_history");
+		chtGr.id = id;
+		chtGr.prompt= prompt;
+		chtGr.response= response;
+		chtGr.interaction = interactionRefId;
+		chtGr.flag = flag;
+		chtGr.insert();
+	},
+	
+	clearHistory:function(){
+		var chtGr = new GlideRecord("x_307427_now_open_chat_history");
+		chtGr.query();
+		chtGr.deleteMultiple();
+	},
+
+	getInteraction:function(){
+		var currentGr = new GlideRecord("interaction");
+		currentGr.addEncodedQuery("state=work_in_progress^type=chat^assigned_to=200c5e64f94611108c8bd16244dfe704^opened_forDYNAMIC90d1921e5f510100a9ad2572f2b477fe");
+		currentGr.query();
+		if (currentGr.next()) {
+		   return currentGr.sys_id;
+		}
+		return null;
 	},
 	
     type: 'openaiUtils'

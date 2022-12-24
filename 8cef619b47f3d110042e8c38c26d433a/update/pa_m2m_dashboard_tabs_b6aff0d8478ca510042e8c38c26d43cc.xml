@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="pa_m2m_dashboard_tabs">
+    <pa_m2m_dashboard_tabs action="INSERT_OR_UPDATE">
+        <dashboard display_value="Now Open AI">a09fb0d8478ca510042e8c38c26d437a</dashboard>
+        <home>false</home>
+        <homepage/>
+        <order>1</order>
+        <sys_class_name>pa_m2m_dashboard_tabs</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-24 11:22:01</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>b6aff0d8478ca510042e8c38c26d43cc</sys_id>
+        <sys_name>a09fb0d8478ca510042e8c38c26d437a</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>pa_m2m_dashboard_tabs_b6aff0d8478ca510042e8c38c26d43cc</sys_update_name>
+        <tab display_value="Now Open AI - New Tab">7aaff0d8478ca510042e8c38c26d43c9</tab>
+    </pa_m2m_dashboard_tabs>
+</record_update>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_grid_canvas_pane">
+    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
+        <grid_canvas display_value="PA Now Open AI - New Tab">2eaff0d8478ca510042e8c38c26d43c6</grid_canvas>
+        <height>10</height>
+        <portal_widget display_value="Created 2022-12-24 03:22:34">b2cf34d8478ca510042e8c38c26d43b4</portal_widget>
+        <posx>6</posx>
+        <posy>0</posy>
+        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-24 11:22:34</sys_created_on>
+        <sys_id>facf34d8478ca510042e8c38c26d43b5</sys_id>
+        <sys_name>2eaff0d8478ca510042e8c38c26d43c6</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_grid_canvas_pane_facf34d8478ca510042e8c38c26d43b5</sys_update_name>
+        <width>6</width>
+    </sys_grid_canvas_pane>
+</record_update>

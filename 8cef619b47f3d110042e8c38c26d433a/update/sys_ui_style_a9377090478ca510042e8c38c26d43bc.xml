@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_style">
+    <sys_ui_style action="INSERT_OR_UPDATE">
+        <alt/>
+        <element>flag</element>
+        <name>x_307427_now_open_chat_history</name>
+        <style>background-color: red;</style>
+        <sys_class_name>sys_ui_style</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-24 10:45:38</sys_created_on>
+        <sys_id>a9377090478ca510042e8c38c26d43bc</sys_id>
+        <sys_name>x_307427_now_open_chat_history</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_ui_style_a9377090478ca510042e8c38c26d43bc</sys_update_name>
+        <value>inappropriate</value>
+    </sys_ui_style>
+    <sys_translated_text action="delete_multiple" query="documentkey=a9377090478ca510042e8c38c26d43bc"/>
+</record_update>

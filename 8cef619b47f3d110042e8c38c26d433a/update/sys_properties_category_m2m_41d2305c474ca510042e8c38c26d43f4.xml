@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties_category_m2m">
+    <sys_properties_category_m2m action="INSERT_OR_UPDATE">
+        <category display_value="OPEN AI Properties">d15cae6f47f71510042e8c38c26d436c</category>
+        <order>500</order>
+        <property display_value="x_307427_now_open.open.ai.api.blacklist.keywords" name="x_307427_now_open.open.ai.api.blacklist.keywords">b4c2345c474ca510042e8c38c26d43d1</property>
+        <sys_class_name>sys_properties_category_m2m</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-12-24 10:25:55</sys_created_on>
+        <sys_id>41d2305c474ca510042e8c38c26d43f4</sys_id>
+        <sys_name>x_307427_now_open.open.ai.api.blacklist.keywords.OPEN AI Properties</sys_name>
+        <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
+        <sys_update_name>sys_properties_category_m2m_41d2305c474ca510042e8c38c26d43f4</sys_update_name>
+    </sys_properties_category_m2m>
+</record_update>
