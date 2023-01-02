@@ -7,7 +7,7 @@
         <hint/>
         <name>NOW Open AI</name>
         <order>100</order>
-        <roles/>
+        <roles>x_307427_now_open.admin</roles>
         <sys_class_name>sys_app_application</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2022-12-21 12:23:04</sys_created_on>

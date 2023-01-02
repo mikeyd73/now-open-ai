@@ -15,6 +15,8 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 	OPEN_AI_MAX_TOKENS: +gs.getProperty("x_307427_now_open.open.ai.api.max.tokens"),
 	OPEN_AI_TEMPERATURE: +gs.getProperty("x_307427_now_open.open.ai.api.temperature"),
 	OPEN_AI_BLACK_LIST: gs.getProperty("x_307427_now_open.open.ai.api.blacklist.keywords"),
+	LOG_ON: false,
+	MAX_TIMEOUT: 3000,
 	
 	getOpenAIResponse:function(recOAIA){
 		try { 
@@ -39,7 +41,7 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 
 			var response = r.execute();
 			var responseBody = response.getBody();	 
-			var httpStatus = response.getStatusCode();
+			//var httpStatus = response.getStatusCode();
 
 			var text= JSON.parse(responseBody).choices[0].text;
 
@@ -63,6 +65,12 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 	getOpenAIResponseVA:function(previousResponse , vaInput){
 		try { 
 			
+			if(this.LOG_ON){
+				//level01
+				gs.info("level00 ---> " + previousResponse);
+				gs.info("level00 ---> " + vaInput);
+			}
+
 			/*var previous_prompt = "i wanna eat";
 			var user_response = "What would you like to eat?";
 			var history = "Bot: " + previous_prompt + "\nUser: " + user_response;
@@ -81,25 +89,56 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 				//"memory": memory
 			});
 
-			//gs.info("6468466x raw:  " + raw)
+			if(this.LOG_ON){
+				//level01
+				gs.info("level01 ---> " + raw);
+			}
+			
 			
 			var r = new sn_ws.RESTMessageV2('x_307427_now_open.Open AI', 'POST');
 			r.setRequestHeader("Authorization", "Bearer " + this.OPEN_AI_KEY);
 			r.setRequestHeader("Content-Type", "application/json");
+			r.setHttpTimeout(this.MAX_TIMEOUT); 
 			r.setRequestBody(raw);
-
 			var response = r.execute();
 			var responseBody = response.getBody();	 
 			var httpStatus = response.getStatusCode();
 
-
-			var answerObj= JSON.parse(responseBody);
-			var text= answerObj.choices[0].text.trim();
-			//gs.info("6468466xx " + JSON.stringify(answerObj))
-			this.saveHistory(answerObj.id, vaInput.toString(), text);
-		
-			return text;
-
+			if(httpStatus == 200){
+				if(this.LOG_ON){
+					//level02
+					gs.info("level02 ---> " + httpStatus +" - "+ responseBody);
+				}
+	
+				if(JSON.parse(responseBody).error){
+					return JSON.parse(responseBody).error.message +"\nPlease dont forget to update api key property.";
+				}
+	
+				var answerObj= JSON.parse(responseBody);
+				var text= answerObj.choices[0].text.trim();
+	
+				if(this.LOG_ON){
+					//level03
+					gs.info("level03 ---> " + text);
+					//gs.info("level: 3 " + /^(\.*\s*)/gm.test(text));
+				}
+	
+				//error by response! not accepted as a prompet!
+				if(/^(\.*\s*)/gm.test(text)){
+					text= text.replace(/^(\.*\s*)/gm, "");
+				}
+				
+				this.saveHistory(answerObj.id, vaInput.toString(), text);
+	
+				if(this.LOG_ON){
+					//level04
+					gs.info("level04 ---> " +  text);
+				}
+			
+				return text;
+			}else {
+				return "OpenAI Service Temporarily Unavailable (Server-Side)";
+			}
 		}
 		catch(ex) {
 			return ex.message;
@@ -110,15 +149,15 @@ openaiUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
 		
 		var flag= "";
 		var blk= this.OPEN_AI_BLACK_LIST.toLowerCase().split(",") || [];
-		//gs.info("65464684: " + blk)
+
 		var flagged= blk.length && blk.some(function(keyword){
 			return prompt.toLowerCase().search(keyword) != -1;
 		});
-		//gs.info("65464684: " + flagged)
+
 		if (flagged) {
 			flag= "inappropriate";
 		}else if(response.length > 50){
-			flag= "	informative";
+			flag= "informative";
 		}
 
 		var interactionRefId= this.getInteraction();

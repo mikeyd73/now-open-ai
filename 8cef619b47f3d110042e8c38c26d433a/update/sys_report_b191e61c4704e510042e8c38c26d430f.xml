@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_report">
     <sys_report action="INSERT_OR_UPDATE">
-        <additional_groupby/>
+        <additional_groupby>caller_id</additional_groupby>
         <aggregate>COUNT</aggregate>
         <aggregation_source>no_override</aggregation_source>
         <allow_data_label_overlap>false</allow_data_label_overlap>
         <apply_alias>false</apply_alias>
         <axis_max_color display_value="UI14 Blue Light">b0d449b3d7332100fa6c0c12ce610383</axis_max_color>
         <axis_min_color display_value="White">65b303c7a9fe3dba00629aff95ee3597</axis_min_color>
-        <bar_unstack>false</bar_unstack>
+        <bar_unstack>true</bar_unstack>
         <calendar/>
         <chart_background_color/>
         <chart_border_color/>
@@ -26,7 +26,7 @@
         <chart_title_x_position>0</chart_title_x_position>
         <chart_title_y_position>0</chart_title_y_position>
         <chart_width>600</chart_width>
-        <color display_value="Default Color">de699435d7033100b4964ebfae610331</color>
+        <color display_value="#dd8581">28de19d8b7733010b288bc16de11a9ac</color>
         <color_palette display_value="Default UI14">aa558ab3d7732100fa6c0c12ce610377</color_palette>
         <colors/>
         <column/>
@@ -45,16 +45,18 @@
         <donut_width_percent>30</donut_width_percent>
         <end_time/>
         <exp_report_attrs>true</exp_report_attrs>
-        <field>interaction</field>
-        <field_list>interaction,prompt,response,flag,sys_created_by,sys_created_on</field_list>
-        <filter/>
+        <field>sys_created_on</field>
+        <field_list>number,opened_at,short_description,caller_id,priority,state,category,assignment_group,assigned_to,sys_updated_on,sys_updated_by</field_list>
+        <filter table="incident">active=true^assignment_group=dd1a7454478ca510042e8c38c26d4388<item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
+            <item display_table="sys_user_group" display_value="HR &amp; CustomerService TEAM" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="dd1a7454478ca510042e8c38c26d4388"/>
+        </filter>
         <formatting_configuration>{"table":"incident","stringFormattingProperties":{},"durationFormattingProperties":{},"dateFormattingProperties":{},"numberFormattingProperties":{}}</formatting_configuration>
         <from/>
         <funnel_neck_percent>30</funnel_neck_percent>
         <gauge_autoscale>true</gauge_autoscale>
         <group/>
         <import_table/>
-        <interval>year</interval>
+        <interval>dayofweek</interval>
         <is_published>false</is_published>
         <is_real_time>false</is_real_time>
         <is_scheduled>false</is_scheduled>
@@ -84,9 +86,9 @@
         <sc_groupby_variable_id/>
         <sc_stackby_item_id/>
         <sc_stackby_variable_id/>
-        <score_color display_value="#1E4335">f9394cc3730033000b9dff603ef6a73a</score_color>
+        <score_color display_value="Black">65b30218a9fe3dba0120df8611520d97</score_color>
         <series_name_text/>
-        <set_color>one_color</set_color>
+        <set_color>several_colors</set_color>
         <show_chart_border>false</show_chart_border>
         <show_chart_data_label>false</show_chart_data_label>
         <show_chart_title>report</show_chart_title>
@@ -97,27 +99,27 @@
         <show_legend>true</show_legend>
         <show_legend_border>false</show_legend_border>
         <show_marker>false</show_marker>
-        <show_zero>true</show_zero>
+        <show_zero>false</show_zero>
         <source_type>table</source_type>
         <start_time/>
         <style_config/>
         <sumfield/>
         <sys_class_name>sys_report</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-12-24 11:26:26</sys_created_on>
-        <sys_id>2ba005d8478ca510042e8c38c26d43bc</sys_id>
-        <sys_name>Total OPEN AI Usage</sys_name>
+        <sys_created_on>2022-12-24 18:29:51</sys_created_on>
+        <sys_id>b191e61c4704e510042e8c38c26d430f</sys_id>
+        <sys_name>Raised Tickets</sys_name>
         <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
-        <sys_update_name>sys_report_2ba005d8478ca510042e8c38c26d43bc</sys_update_name>
-        <table>x_307427_now_open_chat_history</table>
-        <title>Total OPEN AI Usage</title>
+        <sys_update_name>sys_report_b191e61c4704e510042e8c38c26d430f</sys_update_name>
+        <table>incident</table>
+        <title>Raised Tickets</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
         <title_vertical_alignment>top</title_vertical_alignment>
         <to/>
-        <trend_field>sys_created_on</trend_field>
-        <type>single_score</type>
+        <trend_field>opened_at</trend_field>
+        <type>spline</type>
         <upper_limit/>
         <use_color_heatmap>false</use_color_heatmap>
         <use_null_in_trend>false</use_null_in_trend>

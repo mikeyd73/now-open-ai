@@ -45,9 +45,10 @@
         <donut_width_percent>30</donut_width_percent>
         <end_time/>
         <exp_report_attrs>true</exp_report_attrs>
-        <field>interaction</field>
-        <field_list>interaction,prompt,response,flag,sys_created_by,sys_created_on</field_list>
-        <filter/>
+        <field>name</field>
+        <field_list>user_name,name,email,active,sys_created_on,sys_updated_on</field_list>
+        <filter table="sys_user">email=blocked@locked.com<item endquery="false" field="email" goto="false" newquery="false" operator="=" or="false" value="blocked@locked.com"/>
+        </filter>
         <formatting_configuration>{"table":"incident","stringFormattingProperties":{},"durationFormattingProperties":{},"dateFormattingProperties":{},"numberFormattingProperties":{}}</formatting_configuration>
         <from/>
         <funnel_neck_percent>30</funnel_neck_percent>
@@ -86,7 +87,7 @@
         <sc_stackby_variable_id/>
         <score_color display_value="#1E4335">f9394cc3730033000b9dff603ef6a73a</score_color>
         <series_name_text/>
-        <set_color>one_color</set_color>
+        <set_color>color_palette</set_color>
         <show_chart_border>false</show_chart_border>
         <show_chart_data_label>false</show_chart_data_label>
         <show_chart_title>report</show_chart_title>
@@ -104,15 +105,15 @@
         <sumfield/>
         <sys_class_name>sys_report</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2022-12-24 11:26:26</sys_created_on>
-        <sys_id>2ba005d8478ca510042e8c38c26d43bc</sys_id>
-        <sys_name>Total OPEN AI Usage</sys_name>
+        <sys_created_on>2022-12-24 18:35:15</sys_created_on>
+        <sys_id>74d2ee1c4704e510042e8c38c26d43eb</sys_id>
+        <sys_name>Blocked Users</sys_name>
         <sys_package display_value="Now Open AI" source="x_307427_now_open">8cef619b47f3d110042e8c38c26d433a</sys_package>
         <sys_policy/>
         <sys_scope display_value="Now Open AI">8cef619b47f3d110042e8c38c26d433a</sys_scope>
-        <sys_update_name>sys_report_2ba005d8478ca510042e8c38c26d43bc</sys_update_name>
-        <table>x_307427_now_open_chat_history</table>
-        <title>Total OPEN AI Usage</title>
+        <sys_update_name>sys_report_74d2ee1c4704e510042e8c38c26d43eb</sys_update_name>
+        <table>sys_user</table>
+        <title>Blocked Users</title>
         <title_horizontal_alignment>center</title_horizontal_alignment>
         <title_vertical_alignment>top</title_vertical_alignment>
         <to/>

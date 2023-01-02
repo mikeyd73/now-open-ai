@@ -26,7 +26,7 @@
         <chart_title_x_position>0</chart_title_x_position>
         <chart_title_y_position>0</chart_title_y_position>
         <chart_width>600</chart_width>
-        <color display_value="Default Color">de699435d7033100b4964ebfae610331</color>
+        <color display_value="Critical Red">4671ce0477903300fde1bfc26810612e</color>
         <color_palette display_value="Default UI14">aa558ab3d7732100fa6c0c12ce610377</color_palette>
         <colors/>
         <column/>
@@ -49,7 +49,7 @@
         <field_list>interaction,prompt,response,flag,sys_created_by,sys_created_on</field_list>
         <filter table="x_307427_now_open_chat_history">flag=inappropriate<item display_value="Inappropriate" endquery="false" field="flag" goto="false" newquery="false" operator="=" or="false" value="inappropriate"/>
         </filter>
-        <formatting_configuration>{"table":"incident","stringFormattingProperties":{},"durationFormattingProperties":{},"dateFormattingProperties":{},"numberFormattingProperties":{}}</formatting_configuration>
+        <formatting_configuration>{"table":"incident","stringFormattingProperties":{},"durationFormattingProperties":{},"dateFormattingProperties":{},"numberFormattingProperties":{"$COUNT_FIELD$,AGGREGATION":{"decimalPrecision":2,"groupingUsed":true,"roundingMode":"HALF_UP","metricPrefixSymbolUsed":false,"showOriginalNumberInTooltip":true,"addValueInTooltip":true}}}</formatting_configuration>
         <from/>
         <funnel_neck_percent>30</funnel_neck_percent>
         <gauge_autoscale>true</gauge_autoscale>
